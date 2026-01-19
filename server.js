@@ -1,6 +1,8 @@
 import express from "express";
 
 const app = express();
+app.use(express.json());
+
 const nome = "Igor";
 
 
@@ -11,6 +13,13 @@ app.get("/", (req, res) => {
 
 app.get("/status", (req, res) => {
     res.json({ status: "online", message: "Ready to log books" })
+});
+
+
+app.post("/echo", (req, res) => {
+    const data = req.body;
+    console.log(data);
+    res.json(data);
 });
 
 
