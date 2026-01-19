@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Servidor JS</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 20px;
+            color: rgb(106, 182, 20);
+        }
+
+        #status {
+            color: rgb(128, 0, 0);
+        }
+
+        #message {
+            color: rgb(13, 83, 211);
+        }
+    </style>
+</head>
+
+<body>
+    <h3 id="mostrar-status"></h3>
+
+    <script>
+        fetch("http://localhost:3000/status")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("mostrar-status").innerHTML = `
+                    <h3>Status: <span id="status">${data.status}</span></h3>
+                    <h3>Message: <span id="message">${data.message}</span></h3>
+                `;
+            });
+    </script>
+</body>
+
+</html>
